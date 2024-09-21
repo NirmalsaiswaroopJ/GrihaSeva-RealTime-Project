@@ -23,7 +23,7 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'nirmaldummy@gmail.com'  
-app.config['MAIL_PASSWORD'] = 'ncqx lbqx wbnl yyjj'   
+app.config['MAIL_PASSWORD'] = 'Your 16 digit unique app code here'   
 mail = Mail(app)
 
 ###
@@ -33,10 +33,10 @@ def get_db_connection():
     if 'conn' not in g:
         try:
             g.conn = mysql.connector.connect(
-                host="127.0.0.1",
-                user="root",
-                password="Pandu@7463",
-                database="mydatabase",
+                host="Host ID/IP",
+                user="Your Database Username",
+                password="Your Database Passoword",
+                database="Your Database Name",
                 auth_plugin='mysql_native_password'
             )
             g.cursor = g.conn.cursor(dictionary=True)
