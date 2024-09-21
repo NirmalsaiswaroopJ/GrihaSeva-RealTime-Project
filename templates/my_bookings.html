@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Varela', sans-serif;
+            background: url('https://source.unsplash.com/1600x900/?interior,home') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(19, 80, 88, 0.85);
+            z-index: 1;
+        }
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: rgba(40, 52, 67, 0.85);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 2;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            background-color: transparent;
+            border: 1px solid #4a525f;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #7692A7;
+            color: #fff;
+        }
+        header {
+            text-align: center;
+            margin-top: 80px; 
+            z-index: 2;
+        }
+        header h1 {
+            color: #fff;
+            font-size: 36px;
+            margin: 0;
+        }
+        main {
+            background-color: rgba(57, 89, 116, 0.9);
+            padding: 40px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto; 
+            text-align: center;
+            z-index: 2;
+            border-radius: 10px;
+        }
+        main h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        .bookings-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .bookings-grid {
+                grid-template-columns: 1fr; /* One column on smaller screens */
+            }
+        }
+        .booking {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+        .booking:hover {
+            transform: translateY(-5px);
+        }
+        .booking h3 {
+            margin: 0;
+            font-size: 24px;
+            color: #fff;
+        }
+        .booking p {
+            margin: 5px 0;
+            font-size: 18px;
+            color: #ddd;
+        }
+        .btn-details {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-details:hover {
+            background-color: #45a049;
+        }
+        footer {
+            margin-top: auto;
+            text-align: center;
+            color: #ddd;
+            z-index: 2;
+            padding: 10px 0;
+        }
+        footer p {
+            margin: 0;
+        }
+        #loading-indicator {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .btn-cancel {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-cancel:hover {
+            background-color: #ff3333;
+        }
+
+        /* Modal styles for booking details */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 3;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: rgba(57, 89, 116, 0.9);
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/user-home">Home</a></li>
+            <li><a href="/book-appointment">Book Appointment</a></li>
+            <li><a href="/user-profile">Profile</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Your Bookings</h1>
+    </header>
+
+    <main id="bookings-container">
+        <h2>Manage Your Appointments</h2>
+        <div id="loading-indicator">Loading your bookings...</div>
+        <div id="bookings-list" class="bookings-grid"></div>
+    </main>
+
+    <footer>
+        <p>© 2024 GrihaSeva. All rights reserved.</p>
+    </footer>
+
+    <!-- Modal for detailed booking information -->
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Booking Details</h2>
+            <p id="modal-details"></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadingIndicator = document.getElementById('loading-indicator');
+            const bookingsList = document.getElementById('bookings-list');
+            const modal = document.getElementById('detailsModal');
+            const modalDetails = document.getElementById('modal-details');
+            const closeModalBtn = document.querySelector('.close');
+
+            loadingIndicator.style.display = 'block';
+            bookingsList.style.display = 'none';
+
+            // Fetch the user's bookings
+            function loadBookings() {
+                fetch('/api/my-bookings')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.bookings && data.bookings.length > 0) {
+                            const bookingsHTML = data.bookings.map((booking, index) => `
+                                <div class="booking" id="booking-${index}">
+                                    <h3>${booking.service || 'Unknown Service'}</h3>
+                                    <p>Date: ${booking.date || 'No Date'}</p>
+                                    <p>Time: ${booking.time || 'No Time'}</p>
+                                    <button class="btn-details" onclick="viewDetails('${booking.name}', '${booking.date}', '${booking.time}', '${booking.booking_type}')">View Details</button>
+                                    <button class="btn-cancel" onclick="requestCancellation(${index}, '${booking.date}', '${booking.time}', '${booking.booking_type}')">Request Cancellation</button>
+                                </div>
+                            `).join('');
+                            bookingsList.innerHTML = bookingsHTML;
+                        } else {
+                            bookingsList.innerHTML = '<p>No bookings found.</p>';
+                        }
+                        loadingIndicator.style.display = 'none';
+                        bookingsList.style.display = 'grid';
+                    })
+                    .catch(error => {
+                        console.error('Error loading bookings:', error);
+                        loadingIndicator.textContent = 'Error loading bookings. Please try again later.';
+                    });
+            }
+
+            loadBookings();
+
+            // Open modal for detailed view
+            window.viewDetails = function(name, date, time, type) {
+                modalDetails.innerHTML = `
+                    <strong>Service:</strong> ${name} <br>
+                    <strong>Date:</strong> ${date} <br>
+                    <strong>Time:</strong> ${time} <br>
+                    <strong>Booking Type:</strong> ${type}
+                `;
+                modal.style.display = 'flex';
+            };
+
+            // Close modal
+            closeModalBtn.onclick = function() {
+                modal.style.display = 'none';
+            };
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        });
+    </script>
+</body>
+</html>

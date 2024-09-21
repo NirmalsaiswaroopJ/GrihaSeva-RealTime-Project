@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment (Women Services) - HomeServices</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-color: #135058;
+            --secondary-color: #7692A7;
+            --background-color: rgba(57, 89, 116, 0.9);
+            --text-color: #fff;
+            --dropdown-bg: #ffffff;
+            --dropdown-text: #135058;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background: url('https://source.unsplash.com/1600x900/?interior,home') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(19, 80, 88, 0.85);
+            z-index: -1;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        header {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        main {
+            background-color: var(--background-color);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            outline: none;
+        }
+
+        .form-group select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23ffffff' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 30px;
+        }
+
+        .form-group select option {
+            background-color: var(--dropdown-bg);
+            color: var(--dropdown-text);
+        }
+
+        .form-group input[type="submit"] {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #567d91;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            main {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="/user-home">Home</a></li>
+                <li><a href="/my-bookings">My Bookings</a></li>
+                <li><a href="/user-profile">Profile</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Book an Appointment (Women Services)</h1>
+        </header>
+
+        <main>
+            <h2>Fill in the Details</h2>
+            <form method="post" action="{{ url_for('book_appointment_women_services') }}">
+                <div class="form-group">
+                    <label for="date">Select Date:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Select Time:</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Choose Service:</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a service</option>
+                        {% for service in services %}
+                        <option value="{{ service }}">{{ service }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="service-provider">Choose Service Provider:</label>
+                    <select id="service-provider" name="women-service-provider" required>
+                        <option value="">Select a service provider</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Additional Notes (Optional):</label>
+                    <textarea id="notes" name="notes" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Book Appointment">
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2024 GrihaSeva. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('service').addEventListener('change', function() {
+            var service = this.value;
+            var providerDropdown = document.getElementById('service-provider');
+            providerDropdown.innerHTML = '<option value="">Select a service provider</option>';
+
+            if (service) {
+                fetch(`/get-women-service-providers/${service}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("Received data:", data);  // Log received data
+                        data.forEach(function(provider) {
+                            var option = document.createElement('option');
+                            option.value = provider.name;
+                            option.text = `${provider.name} (${provider.age} years old)`;
+                            providerDropdown.add(option);
+                        });
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        });
+    </script>
+</body>
+</html>

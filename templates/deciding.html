@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrihaSeva - Choose Service Provider Type</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Varela', sans-serif;
+            background-color: #F5F7FA;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .container h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .button {
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* Light Sky Blue theme for general services */
+        .btn-general {
+            background-color: #87CEEB;
+            color: #fff;
+        }
+
+        .btn-general:hover {
+            background-color: #6FBED6;
+            box-shadow: 0px 10px 20px rgba(135, 206, 235, 0.5);
+        }
+
+        /* Light Purple theme for women services */
+        .btn-women {
+            background-color: #DDA0DD;
+            color: #fff;
+        }
+
+        .btn-women:hover {
+            background-color: #D39ED1;
+            box-shadow: 0px 10px 20px rgba(221, 160, 221, 0.5);
+        }
+
+        /* Return home button */
+        .btn-home {
+            background-color: #FFD700;
+            color: #333;
+            margin-top: 40px;
+        }
+
+        .btn-home:hover {
+            background-color: #FFC107;
+            box-shadow: 0px 10px 20px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Animated circles */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            animation: move 8s infinite;
+            z-index: 0;
+        }
+
+        .circle.small {
+            width: 100px;
+            height: 100px;
+            background: rgba(221, 160, 221, 0.2);
+            bottom: 10%;
+            right: 20%;
+        }
+
+        .circle.medium {
+            width: 150px;
+            height: 150px;
+            background: rgba(135, 206, 235, 0.2);
+            top: 5%;
+            left: 20%;
+        }
+
+        .circle.large {
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 215, 0, 0.2);
+            bottom: 20%;
+            left: 10%;
+        }
+
+        /* Animation for circles */
+        @keyframes move {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Fade in animation for page */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            animation: fadeIn 1.5s ease;
+        }
+        .circle.green {
+        width: 120px;
+        height: 120px;
+        background: rgba(144, 238, 144, 0.2); /* Light green color */
+        position: absolute;
+        top: 30%;
+        right: 10%;
+        border-radius: 50%;
+        animation: move 8s infinite;
+        z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to GrihaSeva</h1>
+        <h2>Select the type of services you provide to log in</h2>
+        <div class="buttons-container">
+            <button class="button btn-general" onclick="window.location.href='/provider-login'">
+                General Services
+            </button>
+            <button class="button btn-women" onclick="window.location.href='/women-login'">
+                Women-Specific Services
+            </button>
+        </div>
+        <button class="button btn-home" onclick="window.location.href='/'">Return to Home</button>
+    </div>
+
+    <div class="circle green"></div>
+    <!-- Animated circles for background effect -->
+    <div class="circle small"></div>
+    <div class="circle medium"></div>
+    <div class="circle large"></div>
+
+
+</body>
+</html>

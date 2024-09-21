@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrihaSeva - Your One-Stop Solution for Home Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url('https://www.ecomaids.com/portland/wp-content/uploads/sites/4/2023/11/Kitchen-CleanCounters.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+        .gradient-overlay {
+            background: linear-gradient(90deg, rgba(159, 180, 233, 0.625) 0%, rgba(145, 187, 229, 0.7) 50%, rgba(125, 165, 224, 0.5) 75%, rgba(44, 103, 192, 0.516) 100%);
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .service-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background-size: cover;
+            background-position: center;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        #chatbot {
+            transition: all 0.3s ease-in-out;
+        }
+        #chatbot-window {
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+        .chat-header {
+            background: linear-gradient(135deg, #4a90e2, #7b64ff);
+        }
+        .chat-message {
+            background-color: #f0f4f8;
+            border-radius: 1rem;
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .user-message {
+            background-color: #5798c7;
+            margin-left: 1rem;
+        }
+        .bot-message {
+            background-color: #f3e5f5;
+            margin-right: 1rem;
+        }
+        .newname{
+          background-color: #333;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <div class="gradient-overlay min-h-screen">
+        <header class="py-4 bg-opacity-20 backdrop-blur-md">
+            <div class="container mx-auto flex justify-between items-center px-4">
+                <h1 class="text-3xl font-bold">GrihaSeva</h1>
+                <nav>
+                    <button id="menuToggle" class="md:hidden">Menu</button>
+                    <ul class="hidden md:flex space-x-4">
+                        <li><a href="/" class="hover:text-blue-200">Home</a></li>
+                        <li><a href="/services" class="hover:text-blue-200">Services</a></li>
+                        <li><a href="/women" class="hover:text-blue-200">Women</a></li>
+                        <li><a href="/about" class="hover:text-blue-200">About Us</a></li>
+                        <li><a href="/contact" class="hover:text-blue-200">Contact</a></li>
+                        <li><a href="/blogs" class="hover:text-blue-200">Blogs</a></li>
+                        <li><a href="/user-login" class="hover:text-blue-200">User Login</a></li>
+                        <li><a href="/deciding" class="hover:text-blue-200">Provider Login </a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <main class="flex-grow">
+            <section class="py-20">
+                <div class="container mx-auto px-4">
+                    <div class="max-w-2xl">
+                        <h2 class="text-5xl font-bold mb-4 text-shadow">Professional Home Services at Your Doorstep</h2>
+                        <p class="mb-8">Quick and easy booking for cleaning, plumbing, and electrical services.</p>
+                        <div>
+                            <a href="/user-login" class="bg-gradient-to-r from-f5f7fa to-d3e0ff text-black-700 font-bold py-3 px-6 rounded-full mr-4 hover:bg-blue-200 transition duration-300">Book a Service</a>
+                            <a href="/user-register" class="bg-gradient-to-r from-f5f7fa to-d3e0ff text-black-700 font-bold py-3 px-6 rounded-full mr-4 hover:bg-blue-200 transition duration-300">Register as User</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rest of the sections remain the same -->
+            
+        </main>
+        <section class="py-20">
+          <div class="container mx-auto text-center px-4">
+              <h2 class="text-4xl font-bold mb-12 text-shadow">Did You Know?</h2>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                  <div class="bg-white bg-opacity-20 p-8 rounded-lg shadow-lg backdrop-blur-md floating" style="animation-delay: 1s; background-color: #3c91bcb2;">
+                      <h3 class="text-2xl font-bold mb-4">Fun Fact</h3>
+                      <p>A leaky faucet can waste up to 3,000 gallons of water per year!</p>
+                  </div>
+                  <div class="bg-danger bg-opacity-20 p-8 rounded-lg shadow-lg backdrop-blur-md floating" style="animation-delay: 1s; background-color: #3c91bcb2;">
+                      <h3 class="text-2xl font-bold mb-4">Energy Tip</h3>
+                      <p>Regular HVAC maintenance can reduce energy bills by up to 15%.</p>
+                  </div>
+                  <div class="bg-white bg-opacity-20 p-8 rounded-lg shadow-lg backdrop-blur-md floating" style="animation-delay: 1s; background-color: #3c91bcb2;">
+                      <h3 class="text-2xl font-bold mb-4">Safety First</h3>
+                      <p>90% of home accidents can be prevented with proper home maintenance.</p>
+                  </div>
+                  <div class="bg-white bg-opacity-20 p-8 rounded-lg shadow-lg backdrop-blur-md floating" style="animation-delay: 1s; background-color: #3c91bcb2;">
+                      <h3 class="text-2xl font-bold mb-4">Green Living</h3>
+                      <p>Using LED bulbs can save you up to $75 per year on energy costs.</p>
+                  </div>
+                  <div class="bg-white bg-opacity-20 p-8 rounded-lg shadow-lg backdrop-blur-md floating"style="animation-delay: 1s; background-color: #3c91bcb2;">
+                      <h3 class="text-2xl font-bold mb-4">Seasonal Reminder</h3>
+                      <p>Changing your air filters every 3 months can improve air quality and HVAC efficiency.</p>
+                  </div>
+                  <div class="bg-white bg-opacity-20 p-8 rounded-lg shadow-lg backdrop-blur-md floating" style="animation-delay: 2.5s; background-color: #3c91bcb2;">
+                      <h3 class="text-2xl font-bold mb-4">Home Security</h3>
+                      <p>Installing motion-sensor lights around your home can deter burglars and increase safety.</p>
+                  </div>                    
+              </div>
+          </div>
+      </section>
+      
+      <section class="py-20">
+        <div class="container mx-auto text-center px-4">
+            <h2 class="text-4xl font-bold mb-12 text-shadow">General Home Services</h2>
+            <p class="mb-8">We offer a wide range of home services to make your life easier. From electrical repairs to painting and moving, our professionals are here to help you with every household need.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Electrical -->
+                <div class="bg-white bg-opacity-20 p-8 rounded-lg shadow-lg backdrop-blur-md floating" style="animation-delay: 2.5s; background-color: #3c91bcb2;">
+                    <div class="service-image" style="background-image: url('/static/images/ele.jpeg');"></div>
+                    <h3 class="text-2xl font-bold mb-4">Electrical Services</h3>
+                    <p>Our licensed electricians can handle wiring, lighting installation, electrical repairs, and more to keep your home safe and functional.</p>
+                </div>
+                <!-- Cleaning -->
+                <div class="bg-white bg-opacity-20 p-8 rounded-lg shadow-lg backdrop-blur-md floating" style="animation-delay: 2.5s; background-color: #3c91bcb2;">
+                    <div class="service-image" style="background-image: url('/static/images/cleaning.jpeg');"></div>
+                    <h3 class="text-2xl font-bold mb-4">Cleaning Services</h3>
+                    <p>Our expert cleaners will leave your home spotless with deep cleaning, regular maintenance, and specialized cleaning services.</p>
+                </div>
+                
+                <!-- Many more -->
+                <div class="bg-white bg-opacity-20 p-8 rounded-lg shadow-lg backdrop-blur-md floating" style="animation-delay: 2.5s; background-color: #3c91bcb2;">
+                    <div><br><br><br></div>
+                    <h3 class="text-2xl font-bold mb-4">Many more...</h3>
+                    <p>We offer a variety of other home services such as pest moving, painting, and lawn care. Let us take care of your home, inside and out.</p>
+                </div>
+            </div>
+            <div class="mt-12">
+                <a href="/services" class="inline-block bg-blue-500 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-600 transition duration-300">
+                    Explore in depth
+                </a>
+            </div>
+        </div>
+    </section>
+    
+      <section class="py-20">
+          <div class="container mx-auto text-center px-4">
+              <h2 class="text-4xl font-bold mb-12 text-shadow">Women Exclusive Services</h2>
+              <p class="mb-8">Discover our exclusive services designed to pamper and rejuvenate. From beauty treatments to personal care, we've tailored these offerings just for you!</p>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                  <!-- Pedicure -->
+                  <div class="bg-white bg-opacity-20 p-8 rounded-lg shadow-lg backdrop-blur-md floating" style="animation-delay: 2.5s; background-color: #3c91bcb2;">
+                      <div class="service-image" style="background-image: url('/static/images/pedicure1.jpeg');"></div>
+                      <h3 class="text-2xl font-bold mb-4">Pedicure</h3>
+                      <p>Relax with a soothing pedicure service that features exfoliation, nail trimming, and a refreshing foot massage.</p>
+                  </div>
+                  <!-- Hair Care -->
+                  <div class="bg-white bg-opacity-20 p-8 rounded-lg shadow-lg backdrop-blur-md floating" style="animation-delay: 2.5s; background-color: #3c91bcb2;">
+                      <div class="service-image" style="background-image: url('/static/images/haircare1.jpg');"></div>
+                      <h3 class="text-2xl font-bold mb-4">Hair Care</h3>
+                      <p>Enjoy professional hair care services including haircuts, styling, and treatments to keep your locks looking their best.</p>
+                  </div>
+                  <!-- Facial -->
+                  <div class="bg-white bg-opacity-20 p-8 rounded-lg shadow-lg backdrop-blur-md floating" style="animation-delay: 2.5s; background-color: #3c91bcb2;">
+                    <div><br><br><br></div>
+                      <h3 class="text-2xl font-bold mb-4">Many more...</h3>
+                      <p>Enjoy our other services like waxing, manicure etc and feel the power of soothing and relaxing woman beauty service by GrihaSeva.</p>
+                  </div>
+                  
+              </div>
+              <div class="mt-12">
+                  <a href="/women" class="inline-block bg-pink-500 text-white font-bold py-3 px-6 rounded-full hover:bg-pink-600 transition duration-300">
+                      Explore in depth
+                  </a>
+              </div>
+          </div>
+      </section>
+      
+      <section class="py-20">
+          <div class="container mx-auto text-center px-4">
+              <h2 class="text-4xl font-bold mb-8 text-shadow">Learn More About GrihaSeva</h2>
+              <p class="mb-8">Watch this video to understand how GrihaSeva can make your home services hassle-free.</p>
+              <div class="flex justify-center">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/_sZP-sZX7Zg?si=fw4QyuaFY1eavQk9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+          </div>
+      </section>
+
+      <section class="py-20">
+          <div class="container mx-auto text-center px-4">
+              <h2 class="text-4xl font-bold mb-12 text-shadow">What Our Customers Say</h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                  <div class="bg-white bg-opacity-20 p-8 rounded-lg shadow-lg backdrop-blur-md" style="animation-delay: 2.5s; background-color: #3c91bcb2;">
+                      <p class="mb-4">"The plumber arrived on time and fixed the issue quickly. Excellent service!"</p>
+                      <p class="font-bold">- Nirmal</p>
+                  </div>
+                  <div class="bg-white bg-opacity-20 p-8 rounded-lg shadow-lg backdrop-blur-md" style="animation-delay: 2.5s; background-color: #3c91bcb2;">
+                      <p class="mb-4">"The cleaning team did a fantastic job. Highly recommend!"</p>
+                      <p class="font-bold">- Kaushal</p>
+                  </div>
+              </div>
+          </div>
+      </section>
+  </main>
+
+  <footer class="py-4 bg-opacity-20 backdrop-blur-md">
+      <div class="container mx-auto text-center">
+          <p>© 2024 GrihaSeva. All rights reserved.</p>
+          <p><a href="/privacy" class="hover:text-blue-200">Privacy Policy</a> | <a href="/tos" class="hover:text-blue-200">Terms of Service</a></p>
+      </div>
+  </footer>
+
+  <div id="chatbot" class="fixed bottom-4 right-4 z-50">
+      <button id="chatToggle" class="bg-white text-blue-800 px-4 py-2 rounded-full shadow-lg hover:bg-blue-100 transition duration-300">
+          Chat with Us
+      </button>
+  
+      <div id="chatbot-window" style="display:none;" class="bg-white rounded-lg shadow-xl w-80 flex flex-col">
+          <div class="chat-header text-white p-4 rounded-t-lg flex justify-between items-center">
+              <h3 class="font-bold">GrihaSeva Assistant</h3>
+              <div>
+                  <button id="minimizeChat" class="text-xl mr-2">−</button>
+                  <button id="closeChat" class="text-xl">&times;</button>
+              </div>
+          </div>
+          <div id="chatbot-messages" class="flex-grow p-4 overflow-y-auto h-80" style="color: black;"></div>
+          <div class="p-4 border-t">
+              <input type="text" id="chatInput" placeholder="Type your message..." style="color:black" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
+          </div>
+      </div>
+  </div>
+  
+  <script>
+      const chatbot = document.getElementById('chatbot');
+      const chatToggle = document.getElementById('chatToggle');
+      const chatWindow = document.getElementById('chatbot-window');
+      const minimizeChat = document.getElementById('minimizeChat');
+      const closeChat = document.getElementById('closeChat');
+      const chatInput = document.getElementById('chatInput');
+      const chatMessages = document.getElementById('chatbot-messages');
+  
+      let isMinimized = false;
+  
+      chatToggle.addEventListener('click', () => {
+          chatWindow.style.display = 'flex';
+          chatToggle.style.display = 'none';
+          if (!isMinimized) {
+              addMessage('GrihaSeva', 'Welcome to GrihaSeva! How can I assist you today? You can ask about our cleaning, plumbing, electrical, or gardening services.');
+          }
+      });
+  
+      minimizeChat.addEventListener('click', () => {
+          if (isMinimized) {
+              chatWindow.style.height = '400px';
+              minimizeChat.textContent = '−';
+              chatInput.style.display = 'block';
+              chatMessages.style.display = 'block';
+          } else {
+              chatWindow.style.height = '50px';
+              minimizeChat.textContent = '+';
+              chatInput.style.display = 'none';
+              chatMessages.style.display = 'none';
+          }
+          isMinimized = !isMinimized;
+      });
+  
+      closeChat.addEventListener('click', () => {
+          chatWindow.style.display = 'none';
+          chatToggle.style.display = 'block';
+          isMinimized = false;
+          chatWindow.style.height = '400px';
+          minimizeChat.textContent = '−';
+          chatInput.style.display = 'block';
+          chatMessages.style.display = 'block';
+      });
+  
+      chatInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter' && chatInput.value.trim() !== '') {
+              const message = chatInput.value.trim();
+              addMessage('You', message);
+              chatInput.value = '';
+              processMessage(message);
+          }
+      });
+  
+      function addMessage(sender, message) {
+          const messageElement = document.createElement('div');
+          messageElement.className = `chat-message ${sender === 'You' ? 'user-message' : 'bot-message'}`;
+          messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+          chatMessages.appendChild(messageElement);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+  
+      function processMessage(message) {
+          const lowerMessage = message.toLowerCase();
+          let response = '';
+  
+          if (lowerMessage.includes('hi') || lowerMessage.includes('hello') || lowerMessage.includes('hey')) {
+          response = "Hello there! Welcome to Grihaseva. How can I assist you today? We offer a variety of services from home maintenance to beauty care.";
+      } else if (lowerMessage.includes('cleaning')) {
+          response = "Ah, a clean home is a happy home! Our cleaning services include:<br>1. Regular house cleaning<br>2. Deep cleaning<br>3. Move-in/move-out cleaning<br>4. Office cleaning<br>Would you like to know more about our spotless techniques or get a sparkling quote?";
+      } else if (lowerMessage.includes('plumbing')) {
+          response = "Drip, drip, no more! We offer these plumbing services:<br>1. Leak detection and repair<br>2. Drain cleaning<br>3. Water heater installation/repair<br>4. Fixture installation<br>Is there a pesky leak you need fixed ASAP, or are you planning some bathroom upgrades?";
+      } else if (lowerMessage.includes('electrical')) {
+          response = "Let's light up your world! Our electrical services include:<br>1. Wiring and rewiring<br>2. Electrical panel upgrades<br>3. Lighting installation<br>4. Electrical safety inspections<br>Are you dealing with a sudden blackout or thinking about brightening up your space?";
+      } else if (lowerMessage.includes('gardening')) {
+          response = "Time to make your neighbors green with envy! Our gardening services include:<br>1. Garden maintenance<br>2. Landscape design<br>3. Lawn care<br>4. Pruning and trimming<br>Dreaming of a lush lawn or a blooming paradise? How can we help your garden grow?";
+      } else if (lowerMessage.includes('moving')) {
+          response = "New home, new adventures! We provide moving services, including:<br>1. Local residential moves<br>2. Office relocations<br>3. Packing and unpacking services<br>4. Furniture disassembly/reassembly<br>Exciting times ahead! When's the big move, and how can we make it stress-free for you?";
+      } else if (lowerMessage.includes('painting')) {
+          response = "A splash of color can change everything! Our painting services include:<br>1. Interior painting<br>2. Exterior painting<br>3. Touch-up and patchwork<br>4. Decorative and custom finishes<br>Ready to refresh your space? What color dreams can we bring to life for you?";
+      } else if (lowerMessage.includes('manicure')) {
+          response = "Treat your hands to some TLC! Our manicure service includes nail shaping, cuticle care, and polish. It's perfect for a polished look and healthy nails. Fancy some nail art or a classic French manicure?";
+      } else if (lowerMessage.includes('pedicure')) {
+          response = "Happy feet, happy you! Relax with a soothing pedicure that features exfoliation, nail trimming, and a refreshing foot massage. How about adding a pop of color to your toes?";
+      } else if (lowerMessage.includes('hair care')) {
+          response = "Great hair days ahead! Enjoy professional hair care services including haircuts, styling, and treatments to keep your locks looking their best. Thinking of a new do or just a trim?";
+      } else if (lowerMessage.includes('facial')) {
+          response = "Get ready to glow! Rejuvenate your skin with our relaxing facials that cleanse, exfoliate, and nourish. From hydrating to anti-aging, what's your skin craving today?";
+      } else if (lowerMessage.includes('cleanup')) {
+          response = "Refresh and revitalize! Our cleanup service helps maintain your skin's health and appearance by removing impurities and providing a fresh, clean look. Ready for that instant glow-up?";
+      } else if (lowerMessage.includes('waxing')) {
+          response = "Smooth and silky, here we come! Experience hair-free skin with our professional waxing services. Our techniques ensure a gentle and effective removal process. Which area would you like to focus on?";
+      } else if (lowerMessage.includes('book') || lowerMessage.includes('appointment') || lowerMessage.includes('schedule')) {
+          response = "Excellent choice! To book a service, please log in to your user account and schedule an appointment. Need help picking a time or prepping for your service? Just ask!";
+      } else if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('charge')) {
+          response = "Great question! Our service prices vary based on the type of service and location. Which service are you curious about? I'd be happy to provide a specific quote for plumbing, electrical, cleaning, gardening, moving, painting, or any of our women-exclusive services!";
+      } else if (lowerMessage.includes('availability')) {
+          response = "Let's find a time that works for you! Our service availability depends on your location and the type of service needed. Which service are you interested in: plumbing, electrical, cleaning, or one of our fabulous women-exclusive services?";
+      } else if (lowerMessage.includes('quote')) {
+          response = "Numbers you'll love! We'd be thrilled to provide a detailed quote for any of our services. Which one catches your eye: plumbing, electrical, gardening, moving, cleaning, painting, or our pampering women-exclusive services?";
+      } else if (lowerMessage.includes('emergency')) {
+          response = "Oh no! Don't worry, we've got your back. We offer emergency services for plumbing, electrical, and other urgent repairs. What's the situation? Give us the details, and we'll dispatch our superhero team ASAP!";
+      } else if (lowerMessage.includes('tips') || lowerMessage.includes('advice')) {
+          response = "Who doesn't love a good life hack? Here are some home maintenance tips:<br>1. Check for leaks regularly to avoid water damage.<br>2. Clean your AC filters monthly for better efficiency.<br>3. Use energy-saving bulbs for lower electricity bills.<br>Want more golden nuggets of wisdom? Ask me about specific services like plumbing, electrical, gardening, or even beauty care!";
+      } else if (lowerMessage.includes('contact') || lowerMessage.includes('help')) {
+          response = "We're all ears! You can reach our friendly support team by calling +91-XXXX-XXXXXX or emailing support@grihaseva.com. What can we help you with today?";
+      } else if (lowerMessage.includes('women')) {
+          response = "Ladies, it's your time to shine! We offer a range of exclusive services tailored just for you:<br>1. Manicure - for those gorgeous hands<br>2. Pedicure - happy feet, happy you!<br>3. Hair care - because great hair days should be every day<br>4. Facial - get your glow on<br>5. Cleanup - refresh and revitalize<br>6. Waxing - smooth and confident<br>Which of these pampering sessions are you in the mood for? Let's book your me-time!";
+      } else if (lowerMessage.includes('how long') || lowerMessage.includes('duration')) {
+          response = "Great question! The duration of our services varies depending on the specific task. For example, a basic cleaning might take 2-3 hours, while a full home painting could take a few days. Which service are you wondering about? I can give you a more precise estimate.";
+      } else if (lowerMessage.includes('cancel') || lowerMessage.includes('reschedule')) {
+          response = "No problem, life happens! You can easily cancel or reschedule your appointment through your user account. Just log in, go to 'My Bookings', and select the appointment you want to modify. Need help with that?";
+      } else if (lowerMessage.includes('payment') || lowerMessage.includes('pay')) {
+          response = "We've got flexible payment options for you! We accept cash, credit/debit cards, and popular digital wallets. You can pay after the service is completed to your satisfaction. Any preference on how you'd like to pay?";
+      } else if (lowerMessage.includes('covid') || lowerMessage.includes('safety')) {
+          response = "Your safety is our top priority! All our professionals follow strict COVID-19 safety protocols, including wearing masks, sanitizing equipment, and maintaining social distance. We also offer contactless service options. Would you like more details on our safety measures?";
+      } else if (lowerMessage.includes('discount') || lowerMessage.includes('offer')) {
+          response = "Everyone loves a good deal! We regularly run promotions and discounts. Currently, we're offering a 10% discount on your first booking, and a loyalty program for repeat customers. Interested in hearing more about our current offers?";
+      } else if (lowerMessage.includes('gift') || lowerMessage.includes('voucher')) {
+          response = "Spreading joy, are we? That's wonderful! We offer gift cards and service vouchers that make perfect presents for any occasion. You can choose the amount and the recipient can use it for any of our services. Would you like to know more about our gifting options?";
+      } else if (lowerMessage.includes('review') || lowerMessage.includes('feedback')) {
+          response = "We value your opinion! After each service, you'll receive a link to leave a review. Your feedback helps us improve and helps other customers make informed decisions. Have you had a great experience you'd like to share?";
+      } else if (lowerMessage.includes('area') || lowerMessage.includes('location')) {
+          response = "We're constantly expanding to serve you better! Currently, we operate in major cities across India. Could you tell me your city? I'll be happy to confirm if we provide services in your area.";
+      } else if (lowerMessage.includes('difference') || lowerMessage.includes('why choose')) {
+          response = "Great question! What sets us apart is our commitment to quality, our wide range of services, and our customer-first approach. We handpick and thoroughly vet all our professionals, offer a satisfaction guarantee, and provide 24/7 customer support. Would you like to know more about any specific aspect of our service?";
+      } else {
+          response = "Welcome to Grihaseva, your one-stop-shop for all things home and beauty! We offer a variety of services, including plumbing, electrical, gardening, moving, cleaning, painting, and exclusive women's beauty services. What can we help you with today? Whether it's fixing a leaky faucet or treating yourself to a spa day, we've got you covered!";
+      }
+
+              setTimeout(() => {
+                  addMessage('GrihaSeva', response);
+              }, 1000);
+          }
+    </script>
+
+        
+    </div>
+
+    <!-- Chatbot code remains the same -->
+
+</body>
+</html>

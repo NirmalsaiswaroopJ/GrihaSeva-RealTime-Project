@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Varela);
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Varela', sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, rgba(19, 80, 88, 1) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            z-index: 1;
+        }
+        .login-container-wrapper {
+            background: rgba(57, 89, 116, 0.8);
+            padding: 40px;
+            box-shadow: 1px 1px 10px 1px #000000, 8px 8px 0px 0px #344454, 12px 12px 10px 0px #000000;
+            position: relative;
+            padding-top: 80px;
+        }
+        .logo {
+            text-align: center;
+            position: absolute;
+            top: -42px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            background-color: #344455;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 0px 9px 2px #344454;
+        }
+        .logo i {
+            font-size: 50px;
+            color: #fff;
+        }
+        .welcome {
+            margin: 0 0 20px 0;
+            font-size: 16px;
+            color: #fff;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .login-form .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .login-form i {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            color: #93a5ab;
+        }
+        .login-form .form-control {
+            width: 100%;
+            font-size: 16px;
+            height: 50px;
+            padding: 10px 25px;
+            border-radius: 0;
+            background-color: rgba(40, 52, 67, 0.75);
+            border: 1px solid #4a525f;
+            color: #eee;
+            border-left: 4px solid #93a5ab;
+            box-sizing: border-box;
+        }
+        .login-form .form-control:focus {
+            border-left: 4px solid #ccd8da;
+            outline: none;
+        }
+        .btn-success {
+            width: 100%;
+            background-color: transparent;
+            padding: 12px;
+            border-radius: 0;
+            border: 2px solid #93a5ab;
+            box-shadow: inset 0 0 0 0 #7692A7;
+            transition: all ease 0.8s;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-success:hover {
+            background-color: transparent;
+            border-color: #fff;
+            box-shadow: inset 0 0 100px 0 #7692A7;
+        }
+        .checkbox-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .checkbox label {
+            color: #ddd;
+        }
+        .forget {
+            color: #ddd;
+            text-decoration: none;
+        }
+        .forget:hover {
+            text-decoration: underline;
+        }
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .register-link a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <div class="login-container-wrapper">
+            <div class="logo">
+                <i class="fas fa-sign-in-alt"></i>
+            </div>
+            <div class="welcome"><strong>Welcome,</strong> please login</div>
+            <form class = "login-form" method="POST" action="{{ url_for('user_login') }}">
+                <div class="form-group">
+                    <input id="login_username" class="form-control" type="text" name = "username" placeholder="Username" required>
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="form-group">
+                    <input id="login_password" class="form-control" type="password" name = "password" placeholder="Password" required>
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Login</button>
+                </div>
+                <div class="checkbox-container">
+                    <div class="checkbox">
+                        <label><input type="checkbox"> Remember me</label>
+                    </div>
+                    <div>
+                        <a href="{{ url_for('forgot_password') }}">Forgot Password?</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="register-link">
+            <a href="{{ url_for('user_register') }}">Don't have an account? Register</a>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 1000 } },
+                "color": { "value": ["#344455", "#ffffff"] },
+                "shape": {
+                    "type": "edge",
+                    "stroke": { "width": 0, "color": "#000000" },
+                    "polygon": { "nb_sides": 5 }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false }
+                },
+                "size": {
+                    "value": 4,
+                    "random": true,
+                    "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 50,
+                    "color": "#fff",
+                    "opacity": 0.5,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>

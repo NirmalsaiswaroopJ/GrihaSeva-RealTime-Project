@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Exclusive Services</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+        :root {
+            --primary-color: #FFC0CB;
+            --secondary-color: #FFF0F5;
+            --text-color: #4A4A4A;
+            --accent-color: #FF69B4;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .login-btn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            padding: 80px 0 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+            opacity: 0.3;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 3rem;
+            margin: 0;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 50px 0;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .service-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3));
+        }
+
+        .service-content {
+            padding: 20px;
+        }
+
+        h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .explore-btn {
+            display: block;
+            width: 250px;
+            margin: 50px auto;
+            padding: 15px 30px;
+            background-color: var(--accent-color);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .explore-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.4s;
+            z-index: -1;
+        }
+
+        .explore-btn:hover::before {
+            left: 100%;
+        }
+
+        .explore-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255,105,180,0.4);
+        }
+
+        .service-details {
+            background-color: white;
+            padding: 20px;
+            border-radius: 0 0 15px 15px;
+            display: none;
+        }
+
+        .service-details h4 {
+            color: var(--accent-color);
+            margin-top: 0;
+        }
+
+        .service-details ul {
+            padding-left: 20px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        .button-group {
+    display: flex;
+    flex-direction: column;  /* Stack the buttons vertically */
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically */
+    margin-top: 30px;
+}
+
+.button-group .explore-btn, 
+.button-group .register-btn {
+    margin-bottom: 20px; /* Space between the buttons */
+}
+
+.button-group .register-btn {
+    padding: 15px 30px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.button-group .register-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255,105,180,0.4);
+}
+
+/* Ensure the last button does not have extra margin */
+.button-group .register-btn:last-child {
+    margin-bottom: 0;
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/women-login" class="login-btn">Login to Book</a></li>
+        </ul>
+    </nav>
+    <header id="home">
+        <h1>Women Exclusive Services</h1>
+    </header>
+    
+    <main class="container">
+        <section class="services">
+            <div class="service-card">
+                <div class="service-image" style="background-image: url('/static/images/manicure.jpeg');"></div>
+                <div class="service-content">
+                    <h3>Manicure</h3>
+                    <p>Indulge in a luxurious manicure that includes nail shaping, cuticle care, and polish.</p>
+                </div>
+                <div class="service-details">
+                    <h4>Our Manicure Process:</h4>
+                    <ul>
+                        <li>Nail shaping and filing</li>
+                        <li>Cuticle treatment and moisturizing</li>
+                        <li>Hand massage with luxury lotion</li>
+                        <li>Application of base coat, color, and top coat</li>
+                        <li>Quick-dry treatment</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Repeat similar structure for other services -->
+            <div class="service-card">
+                <div class="service-image" style="background-image: url('/static/images/pedicure.jpeg');"></div>
+                <div class="service-content">
+                    <h3>Pedicure</h3>
+                    <p>Relax with a soothing pedicure service that features exfoliation and a refreshing foot massage.</p>
+                </div>
+                <div class="service-details">
+                    <h4>Our Pedicure Experience:</h4>
+                    <ul>
+                        <li>Foot soak in aromatherapy bath</li>
+                        <li>Exfoliation of feet and lower legs</li>
+                        <li>Nail shaping and cuticle care</li>
+                        <li>Relaxing foot and leg massage</li>
+                        <li>Polish application with your choice of color</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Insert these service cards into the "services" section of the main HTML -->
+
+<div class="service-card">
+    <div class="service-image" style="background-image: url('/static/images/haircare.jpg');"></div>
+    <div class="service-content">
+        <h3>Hair Care</h3>
+        <p>Enjoy professional hair care services including haircuts, styling, and treatments.</p>
+    </div>
+    <div class="service-details">
+        <h4>Our Hair Care Services:</h4>
+        <ul>
+            <li>Precision haircuts for all styles</li>
+            <li>Color treatments and highlights</li>
+            <li>Deep conditioning treatments</li>
+            <li>Blowouts and styling</li>
+            <li>Hair extensions and special occasion styling</li>
+        </ul>
+    </div>
+</div>
+
+<div class="service-card">
+    <div class="service-image" style="background-image: url('/static/images/facial.jpeg');"></div>
+    <div class="service-content">
+        <h3>Facial</h3>
+        <p>Rejuvenate your skin with our relaxing facials that cleanse, exfoliate, and nourish.</p>
+    </div>
+    <div class="service-details">
+        <h4>Our Facial Process:</h4>
+        <ul>
+            <li>Skin analysis and consultation</li>
+            <li>Deep cleansing and exfoliation</li>
+            <li>Steam treatment to open pores</li>
+            <li>Extractions (if necessary)</li>
+            <li>Customized mask application</li>
+            <li>Moisturizing and sun protection</li>
+        </ul>
+    </div>
+</div>
+
+<div class="service-card">
+    <div class="service-image" style="background-image: url('/static/images/cleanip.jpeg');"></div>
+    <div class="service-content">
+        <h3>Cleanup</h3>
+        <p>Our cleanup service helps maintain your skin's health by removing impurities for a fresh look.</p>
+    </div>
+    <div class="service-details">
+        <h4>Cleanup Treatment Steps:</h4>
+        <ul>
+            <li>Gentle cleansing to remove surface impurities</li>
+            <li>Mild exfoliation to remove dead skin cells</li>
+            <li>Steam application to open pores</li>
+            <li>Blackhead and whitehead removal</li>
+            <li>Toning to balance skin pH</li>
+            <li>Hydrating mask application</li>
+        </ul>
+    </div>
+</div>
+
+<div class="service-card">
+    <div class="service-image" style="background-image: url('/static/images/waxing.jpeg');"></div>
+    <div class="service-content">
+        <h3>Waxing</h3>
+        <p>Experience smooth and hair-free skin with our professional and gentle waxing services.</p>
+    </div>
+    <div class="service-details">
+        <h4>Our Waxing Services:</h4>
+        <ul>
+            <li>Facial waxing (eyebrows, upper lip, chin)</li>
+            <li>Full arm and underarm waxing</li>
+            <li>Leg waxing (half and full)</li>
+            <li>Bikini and Brazilian waxing</li>
+            <li>Back and chest waxing</li>
+            <li>Post-wax soothing treatment</li>
+        </ul>
+    </div>
+</div>
+        </section>
+
+        <div class="button-group">
+            <button class="explore-btn">Explore Our Services in Depth</button>
+            <a href="{{ url_for('women_provider_register') }}" class="register-btn">Register as Women Service Provider</a>
+        </div>
+        <br>
+    </main>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray('.service-card').forEach((card, index) => {
+            gsap.to(card, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top bottom-=100',
+                    end: 'top center',
+                    toggleActions: 'play none none reverse'
+                },
+                delay: index * 0.2
+            });
+        });
+
+        gsap.from('.explore-btn', {
+            opacity: 0,
+            scale: 0.5,
+            duration: 1,
+            ease: 'back.out(1.7)',
+            scrollTrigger: {
+                trigger: '.explore-btn',
+                start: 'top bottom-=50',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        document.querySelector('.explore-btn').addEventListener('click', function() {
+            const details = document.querySelectorAll('.service-details');
+            details.forEach(detail => {
+                if (detail.style.display === 'none' || detail.style.display === '') {
+                    detail.style.display = 'block';
+                    gsap.from(detail, {
+                        height: 0,
+                        opacity: 0,
+                        duration: 0.5,
+                        ease: 'power2.out'
+                    });
+                } else {
+                    gsap.to(detail, {
+                        height: 0,
+                        opacity: 0,
+                        duration: 0.5,
+                        ease: 'power2.in',
+                        onComplete: () => detail.style.display = 'none'
+                    });
+                }
+            });
+            this.textContent = this.textContent === 'Explore Our Services in Depth' ? 'Hide Service Details' : 'Explore Our Services in Depth';
+        });
+        
+    </script>
+</body>
+</html>

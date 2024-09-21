@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Default Title{% endblock %}</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- Add your CSS links here -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(19, 80, 88, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 150%;
+            background: url('https://source.unsplash.com/random/1920x1080?technology') no-repeat center/cover;
+            opacity: 0.3;
+            z-index: -1;
+            transform: scale(1.2);
+            animation: moveBackground 10s infinite alternate ease-in-out;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: scale(1.2) translateX(0); }
+            100% { transform: scale(1.2) translateX(-50px); }
+        }
+
+        header h1 {
+            font-size: 3em;
+            letter-spacing: 3px;
+            animation: fadeInDown 1.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        main {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .content-block {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 2s ease-in-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        footer::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 150%;
+            background: url('https://source.unsplash.com/random/1920x1080?nature') no-repeat center/cover;
+            opacity: 0.3;
+            z-index: -1;
+            transform: scale(1.2);
+            animation: moveBackground 10s infinite alternate ease-in-out;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ef32d9;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #89fffd;
+            text-decoration: underline;
+        }
+        
+
+
+    </style>
+</head>
+<body>
+    <main>
+        <div class="content-block">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2024 GrihaSeva. All rights reserved.</p>
+    </footer>
+
+    <!-- Add your JavaScript links here -->
+</body>
+</html>

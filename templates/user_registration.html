@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela&display=swap">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Varela);
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Varela', sans-serif;
+            background: linear-gradient(135deg, rgba(19, 80, 88, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .quote-container {
+            max-width: 500px;
+            padding: 20px;
+            color: #ffffff;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .quote-container h3 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .quote-container p {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .quote-container img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.5s ease;
+        }
+
+        .quote-container img:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: #161515;
+            font-size: 16px;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .btn-register {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #1abc9c;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .btn-register:hover {
+            background: #035f87;
+            transform: scale(1.05);
+        }
+
+        .home-btn {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #066076;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .home-btn:hover {
+            text-decoration: underline;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #ffffff;
+        }
+
+        .login-link a {
+            color: #066076;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quote-container">
+            <h3>“Your home is a reflection of your soul.”</h3>
+            <p>Sign up now and start making your space even better with our services.</p>
+            <img src="/static/images/home.jpeg" alt="Inspiring Home Image">
+        </div>
+        <div class="form-container">
+            <h2>User Registration</h2>
+            <form method="POST" action="{{ url_for('user_register') }}">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password" required>
+                </div>
+                <button type="submit" class="btn-register">Register</button>
+            </form>
+            <a href="/" class="home-btn">Return to Home</a>
+            <div class="login-link">
+                Already have an account? <a href="{{ url_for('user_login') }}">Login</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

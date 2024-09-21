@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Earnings</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+
+        /* Reset and base styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Varela', sans-serif;
+            color: #4682B4; /* Changed to match color scheme */
+        }
+
+        body {
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, rgba(135, 206, 235, 1) 100%); /* Updated background */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Navigation styles */
+        nav {
+            background-color: rgba(135, 206, 235, 0.8); /* Updated background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #4682B4; /* Updated to match color scheme */
+            padding: 10px 20px;
+            border: 2px solid #4682B4; /* Border to match color scheme */
+            transition: all ease 0.8s;
+        }
+
+        nav ul li a:hover {
+            background-color: #5F9EA0; /* Hover color updated */
+            color: #fff;
+        }
+
+        /* Header styles */
+        header {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+            color: #4682B4; /* Updated text color */
+        }
+
+        /* Main content styles */
+        main {
+            background-color: rgba(135, 206, 235, 0.8); /* Updated background */
+            padding: 40px;
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 1px 1px 10px 1px #4682B4, 8px 8px 0px 0px #5F9EA0, 12px 12px 10px 0px #4682B4; /* Box shadow updated */
+        }
+
+        main h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            color: #4682B4; /* Updated text color */
+        }
+
+        /* Form styles */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #4682B4; /* Updated label color */
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff; /* White background for better visibility */
+            color: #000; /* Black text */
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #5F9EA0; /* Updated button color */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #4682B4; /* Updated hover color */
+        }
+
+        /* Checkbox */
+        .form-group-checkbox {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-group-checkbox input {
+            margin-right: 10px;
+        }
+
+        .form-group-checkbox label {
+            font-size: 16px;
+            color: #4682B4; /* Updated text color */
+        }
+
+        /* Footer styles */
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #4682B4; /* Updated footer color */
+            padding: 10px 0;
+        }
+
+        /* Earnings Display Styles */
+        .earnings-display {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .earnings-display p {
+            font-size: 18px;
+            color: #4682B4; /* Updated text color */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/provider-home">Home</a></li>
+            <!-- Add other navigation links as needed -->
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Provider Earnings</h1>
+    </header>
+
+    <main>
+        <h2>Calculate Your Earnings</h2>
+        <form id="earningsForm" method="POST" action="/provider-earnings">
+            <div class="form-group">
+                <label for="hourlyCharge">Hourly Charge (in Rupees):</label>
+                <input type="number" id="hourlyCharge" name="hourlyCharge" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="hoursWorked">Number of Hours Worked:</label>
+                <input type="number" id="hoursWorked" name="hoursWorked" step="0.01" required>
+            </div>
+
+            <div class="form-group-checkbox">
+                <input type="checkbox" id="validate" name="validate" required>
+                <label for="validate">I confirm the above details are accurate.</label>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Calculate Earnings">
+            </div>
+        </form>
+
+        <!-- Dynamically display the provider's earnings for the session and total earnings -->
+        {% if session_earnings %}
+        <div class="earnings-display">
+            <h3>Earnings This Session</h3>
+            <p>Hourly Charge: Rs.{{ hourly_charge }}</p>
+            <p>Hours Worked: {{ hours_worked }}</p>
+            <p>Total Earnings This Session: Rs.{{ session_earnings }}</p>
+        </div>
+        {% endif %}
+
+        <div class="earnings-display">
+            <h3>Your Total Earnings</h3>
+            <p>Total Earnings: Rs.{{ total_earnings }}</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 GrihaSeva. All rights reserved.</p>
+    </footer>
+</body>
+</html>

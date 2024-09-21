@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Provider Home - GrihaSeva</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Varela', sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #fff;
+            background: radial-gradient(ellipse at center, rgba(230, 200, 250, 1) 0%, rgba(180, 140, 200, 1) 100%);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        nav {
+            background-color: rgba(180, 140, 200, 0.8);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            z-index: 2;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            background-color: transparent;
+            border: 1px solid #f0c6e2;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #f0c6e2;
+            color: #890ba5;
+        }
+        header {
+            text-align: center;
+            margin: 40px 0 20px;
+            z-index: 2;
+        }
+        header h1 {
+            color: #890ba5;
+            font-size: 36px;
+            margin: 0;
+        }
+        main {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+        .container {
+            background-color: rgba(230, 200, 250, 0.8);
+            padding: 40px;
+            box-shadow: 1px 1px 10px 1px #b37aaf, 8px 8px 0px 0px #c48ec6, 12px 12px 10px 0px #b37aaf;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .quote-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 20px;
+            font-style: italic;
+            color: #b37aaf;
+            border-left: 4px solid #b37aaf;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #b37aaf;
+            z-index: 2;
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        footer p {
+            margin: 0;
+        }
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <nav>
+        <ul>
+            <li><a href="/women-provider-profile">Profile</a></li>
+            <li><a href="/women-provider-bookings">Bookings</a></li>
+            <li><a href="/women-provider-earnings">Earnings</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Welcome, {{ session['username'] }}!</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div class="quote-box">
+                "Empowerment starts with you."
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 GrihaSeva. All rights reserved.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 1000 } },
+                "color": { "value": ["#b37aaf", "#ffffff"] },
+                "shape": {
+                    "type": "circle",
+                    "stroke": { "width": 0, "color": "#000000" },
+                    "polygon": { "nb_sides": 5 }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false }
+                },
+                "size": {
+                    "value": 4,
+                    "random": true,
+                    "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 50,
+                    "color": "#fff",
+                    "opacity": 0.5,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>

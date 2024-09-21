@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Profile - Grihaseva</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Varela', sans-serif;
+            background: radial-gradient(ellipse at center, rgba(230, 200, 250, 1) 0%, rgba(180, 140, 200, 1) 100%); /* Light purple gradient */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            color: #fff;
+        }
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(180, 140, 200, 0.6); /* Light purple overlay */
+            z-index: 1;
+        }
+        nav {
+            width: 100%;
+            background-color: rgba(180, 140, 200, 0.85); /* Semi-transparent light purple */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 2;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            background-color: transparent;
+            border: 1px solid #b37aaf; /* Purple border */
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #b37aaf; /* Purple background on hover */
+            color: #fff;
+        }
+        header {
+            text-align: center;
+            margin: 40px 0 20px;
+            z-index: 2;
+        }
+        header h1 {
+            color: #bf08d4; /* Purple text */
+            font-size: 36px;
+            margin: 0;
+        }
+        main {
+            display: flex;
+            justify-content: space-between;
+            background-color: rgba(230, 200, 250, 0.8); /* Light purple */
+            padding: 40px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 900px;
+            z-index: 2;
+            border-radius: 10px;
+        }
+        .profile-section, .password-section {
+            width: 48%;
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: 600;
+            color: #b90cd4; /* Purple text */
+        }
+        h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+            color: #b90cd4; /* Purple text */
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            text-align: left;
+            font-size: 16px;
+            color: #fff;
+        }
+        input[type="text"], input[type="email"], input[type="password"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #b90cd4; /* Purple */
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #a35a8d; /* Darker purple on hover */
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #b37aaf; /* Purple text */
+            z-index: 2;
+        }
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <header>
+        <h1>Provider Profile</h1>
+        <nav>
+            <ul>
+                <li><a class="nav-link nav-link-home" href="/women-home">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="profile-section">
+            <h2>Update Your Information</h2>
+            <form method="POST" action="{{ url_for('women_provider_profile') }}">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="{{ provider['name'] }}" required>
+        
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" value="{{ provider['phone'] }}" required>
+        
+                <label for="address">Address</label>
+                <textarea id="address" name="address" rows="3" required>{{ provider['address'] }}</textarea>
+
+                <input type="submit" value="Update Profile">
+            </form>
+        </div>
+        
+        <div class="password-section">
+            <h3>Change Password</h3>
+            <form method="POST" action="{{ url_for('women_provider_update_password') }}">
+                <label for="current_password">Current Password</label>
+                <input type="password" id="current_password" name="current_password" required>
+
+                <label for="new_password">New Password</label>
+                <input type="password" id="new_password" name="new_password" required>
+
+                <label for="confirm_password">Confirm New Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+
+                <input type="submit" value="Update Password">
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 GrihaSeva. All rights reserved.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 1000 } },
+                "color": { "value": ["#b37aaf", "#ffffff"] }, /* Purple and white particles */
+                "shape": {
+                    "type": "circle",
+                    "stroke": { "width": 0, "color": "#000000" },
+                    "polygon": { "nb_sides": 5 }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false }
+                },
+                "size": {
+                    "value": 4,
+                    "random": true,
+                    "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#b37aaf",
+                    "opacity": 0.5,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>

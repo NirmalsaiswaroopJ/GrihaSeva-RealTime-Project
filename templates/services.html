@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - GrihaSeva</title>
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --accent-color: #b3d9ff;
+            --background-color: #f0f8ff;
+            --text-color: #333;
+            --timeline-color: #ddd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        nav {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        nav.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        nav ul li {
+            margin-left: 2rem;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #0052a3;
+        }
+        .login-btn {
+            background-color: var(--primary-color);
+            color: white !important;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        .login-btn:hover {
+            background-color: #0052a3;
+            transform: translateY(-2px);
+        }
+        header {
+            background-color: var(--primary-color);
+            padding: 120px 0 80px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+            opacity: 0.3;
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        h1 {
+            color: white;
+            margin: 0;
+            font-size: 3rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 100px auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--timeline-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .service {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .service::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--background-color);
+            border: 4px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--timeline-color);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--timeline-color);
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--timeline-color);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--timeline-color) transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .service-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            position: absolute;
+            top: -25px;
+            left: 20px;
+            color: white;
+            font-size: 24px;
+        }
+        .service h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            padding-top: 20px;
+        }
+        .learn-more {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .learn-more:hover {
+            background-color: #0052a3;
+            transform: translateY(-2px);
+        }
+        .service-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+            opacity: 0;
+        }
+        .service-details.active {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        @media screen and (max-width: 600px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .service {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .service::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            .left::after, .right::after {
+                left: 15px;
+            }
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="container">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/user-login" class="login-btn">Login to Book</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home">
+        <div class="container">
+            <h1>Our Services</h1>
+        </div>
+    </header>
+
+    <main class="container" role="main" id="services">
+        <div class="timeline">
+            <div class="service left">
+                <div class="service-content">
+                    <div class="service-icon">🧹</div>
+                    <h2>Cleaning Services</h2>
+                    <p>Professional cleaning for your home or office.</p>
+                    <div class="learn-more">Learn More</div>
+                    <div class="service-details">
+                        <h4>About Cleaning Services</h4>
+                        <p>Our cleaning services provide a thorough and professional approach to maintaining your space. We offer flexible scheduling and use eco-friendly products.</p>
+                        <h5>Our Specialty</h5>
+                        <p>We specialize in attention to detail and customer satisfaction, personalizing each cleaning service based on your preferences and specific needs.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="service right">
+                <div class="service-content">
+                    <div class="service-icon">🔧</div>
+                    <h2>Plumbing Services</h2>
+                    <p>Expert plumbing solutions for all your needs.</p>
+                    <div class="learn-more">Learn More</div>
+                    <div class="service-details">
+                        <h4>About Plumbing Services</h4>
+                        <p>Our plumbing services include repairs, installations, and maintenance. We handle everything from fixing leaks to installing new fixtures with expertise and efficiency.</p>
+                        <h5>Our Specialty</h5>
+                        <p>We specialize in high-quality workmanship and use top-notch materials to ensure lasting results. Our plumbers are certified and experienced to tackle any plumbing challenge.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="service left">
+                <div class="service-content">
+                    <div class="service-icon">⚡</div>
+                    <h2>Electrical Services</h2>
+                    <p>Safe and reliable electrical solutions.</p>
+                    <div class="learn-more">Learn More</div>
+                    <div class="service-details">
+                        <h4>About Electrical Services</h4>
+                        <p>Our electrical services cover everything from wiring and installations to repairs and upgrades. We ensure your electrical systems are safe and efficient.</p>
+                        <h5>Our Specialty</h5>
+                        <p>Our specialty is in delivering reliable electrical solutions with attention to detail. We stay updated with the latest technology and safety standards.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="service right">
+                <div class="service-content">
+                    <div class="service-icon">🎨</div>
+                    <h2>Painting Services</h2>
+                    <p>Transform your space with our professional painting.</p>
+                    <div class="learn-more">Learn More</div>
+                    <div class="service-details">
+                        <h4>About Painting Services</h4>
+                        <p>Our painting services offer a fresh look to your space with professional results. We handle both interior and exterior painting projects with attention to detail.</p>
+                        <h5>Our Specialty</h5>
+                        <p>Our specialty is in delivering impeccable painting results that enhance the aesthetic appeal of your property. We work with you to choose colors and finishes that match your vision.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="service left">
+                <div class="service-content">
+                    <div class="service-icon">🌱</div>
+                    <h2>Gardening Services</h2>
+                    <p>Create and maintain beautiful outdoor spaces.</p>
+                    <div class="learn-more">Learn More</div>
+                    <div class="service-details">
+                        <h4>About Gardening Services</h4>
+                        <p>Our gardening services include designing, planting, and maintaining beautiful gardens. We work to create outdoor spaces that thrive with vibrant plants and lush greenery.</p>
+                        <h5>Our Specialty</h5>
+                        <p>Our specialty is in creating stunning gardens that reflect your personal style and enhance your outdoor living area. We use sustainable practices to ensure a healthy garden environment.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="service right">
+                <div class="service-content">
+                    <div class="service-icon">📦</div>
+                    <h2>Moving/Shifting Services</h2>
+                    <p>Stress-free relocation services for your convenience.</p>
+                    <div class="learn-more">Learn More</div>
+                    <div class="service-details">
+                        <h4>About Moving/Shifting Services</h4>
+                        <p>Our moving and shifting services provide a seamless experience for relocating your belongings. We handle everything from packing and loading to transportation and unloading.</p>
+                        <h5>Our Specialty</h5>
+                        <p>Our specialty is in providing stress-free moving solutions with a dedicated team that ensures timely and careful handling of your belongings. We strive to make your transition as smooth as possible.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 GrihaSeva. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.learn-more').forEach(button => {
+            button.addEventListener('click', function() {
+                const details = this.nextElementSibling;
+                const allDetails = document.querySelectorAll('.service-details');
+                const allButtons = document.querySelectorAll('.learn-more');
+                
+                allDetails.forEach(detail => {
+                    if (detail !== details) {
+                        detail.classList.remove('active');
+                    }
+                });
+
+                allButtons.forEach(btn => {
+                    if (btn !== this) {
+                        btn.textContent = 'Learn More';
+                    }
+                });
+
+                details.classList.toggle('active');
+                this.textContent = details.classList.contains('active') ? 'Show Less' : 'Learn More';
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
