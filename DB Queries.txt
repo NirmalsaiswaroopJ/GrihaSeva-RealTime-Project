@@ -1,0 +1,92 @@
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE appointments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date DATE NOT NULL,
+    time TIME NOT NULL,
+    service VARCHAR(255) NOT NULL,
+    provider VARCHAR(255) NOT NULL,
+    notes TEXT,
+    username VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE password_reset_tokens (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    token VARCHAR(100) NOT NULL,
+    expiry DATETIME NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE service_providers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    service_type VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE provider_details (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    provider_username VARCHAR(255),
+    name VARCHAR(255),
+    phone VARCHAR(20),
+    address TEXT,
+    FOREIGN KEY (provider_username) REFERENCES service_providers(username)
+);
+
+CREATE TABLE provider_earnings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    provider_name VARCHAR(100),
+    earnings DECIMAL(10, 2)
+);
+
+CREATE TABLE provider_password_reset_tokens (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    provider_id INT,
+    token VARCHAR(255),
+    expiry DATETIME,
+    FOREIGN KEY (provider_id) REFERENCES service_providers(id)
+);
+
+CREATE TABLE women_service_providers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    username VARCHAR(50),
+    email VARCHAR(100),
+    domain VARCHAR(50),
+    phone VARCHAR(50),
+    password VARCHAR(255),
+    age INT,
+    gov_id VARCHAR(50)
+);
+
+CREATE TABLE women_service_appointments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date DATE,
+    time TIME,
+    service VARCHAR(255),
+    provider VARCHAR(255),
+    notes TEXT,
+    username VARCHAR(255)
+);
+
+CREATE TABLE women_provider_earnings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    provider_name VARCHAR(255),
+    earnings DECIMAL(10,2)
+);
+
+CREATE TABLE women_password_reset_tokens (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    provider_id INT,
+    token VARCHAR(255),
+    expiry DATETIME,
+    FOREIGN KEY (provider_id) REFERENCES women_service_providers(id)
+);
