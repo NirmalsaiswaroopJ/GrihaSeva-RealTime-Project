@@ -40,6 +40,9 @@ Here is an overview of the project structure with links to key files and directo
 - [**GrihaSeva Project Database Queries.pdf**](./GrihaSeva%20Project%20Database%20Queries.pdf)  
   A PDF containing the SQL queries used to set up and manage the database for users, services, and providers.
 
+- [**Libraries & Modules.pdf**](./Libraries%20&t%20Modules.pdf)  
+  A PDF containing detailed description and purpose of libraries and modules used in the course of project.
+
 - [**requirements.txt**](./requirements.txt)  
   A list of the Python dependencies needed to run the project locally.
 
