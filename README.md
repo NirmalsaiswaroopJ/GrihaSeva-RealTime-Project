@@ -25,7 +25,9 @@ Here is an overview of the project structure with links to key files and directo
   Contains static assets such as images used throughout the website.
   - [**images/**](./static/images)  
     This folder holds images for various services, such as electrical, cleaning, and beauty services.
-  
+  - [**css/**](./static/css)  
+    This folder holds cascading style sheets for various login and registration form webpages.
+    
 - [**templates/**](./templates)  
   Contains the HTML templates for different pages of the web application.
   - [**index.html**](./templates/index.html)  
