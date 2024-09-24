@@ -27,6 +27,8 @@ Here is an overview of the project structure with links to key files and directo
     This folder holds images for various services, such as electrical, cleaning, and beauty services.
   - [**css/**](./static/css)  
     This folder holds cascading style sheets for various login and registration form webpages.
+  - [**js/**](./static/js)  
+    This folder holds javascript for various login webpages.
     
 - [**templates/**](./templates)  
   Contains the HTML templates for different pages of the web application.
