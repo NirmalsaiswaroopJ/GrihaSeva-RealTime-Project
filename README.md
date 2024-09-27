@@ -17,6 +17,12 @@ GrihaSeva is designed to provide users with quick and reliable home services. Us
 
 You can view the static version of the GrihaSeva project here - [Website](https://grihasevaservice.netlify.app/).
 
+## Youtube Video
+
+I’m excited to share a video walkthrough of *GrihaSeva*, my dynamic home services platform! This video highlights the real-time features, such as service booking, provider dashboards, and the chatbot feature.
+
+[![Watch the video](https://img.youtube.com/vi/Dbookr_UOrE/maxresdefault.jpg)](https://www.youtube.com/watch?v=Dbookr_UOrE)
+
 ## Project Structure
 
 Here is an overview of the project structure with links to key files and directories:
