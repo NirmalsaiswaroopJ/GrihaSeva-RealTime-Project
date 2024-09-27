@@ -47,6 +47,10 @@ Here is an overview of the project structure with links to key files and directo
 - [**Libraries & Modules.pdf**](./Libraries%20&%20Modules.pdf)  
   A PDF containing detailed description and purpose of libraries and modules used in the course of project.
 
+- [**Real Time Functionalities.pdf**](./Real%20Time%20Functionalities.pdf)  
+  A detailed PDF explaining the real-time functionalities of GrihaSeva, including dynamic service booking, provider dashboards, chatbot assistance, interactive blogs with 
+  emoji reactions, and secure password recovery using Flask-Mail.
+  
 - [**requirements.txt**](./requirements.txt)  
   A list of the Python dependencies needed to run the project locally.
 
