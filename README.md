@@ -141,7 +141,7 @@ To run this project locally, follow these steps:
 ## Technologies Used
 
 - **Frontend**: HTML5, CSS3, JavaScript, Tailwind CSS for responsive and modern design&#8203;:contentReference[oaicite:0]{index=0}.
-- **Backend**: Python, Flask for routing and form handling.
+- **Backend**: Python-Flask for routing and form handling.
 - **Database**: Managed using SQL queries stored in `GrihaSeva Project Database Queries.pdf`.
 - **Deployment**: The project is hosted using Netlify for static files.
 
