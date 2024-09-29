@@ -23,6 +23,20 @@ I’m excited to share a video walkthrough of *GrihaSeva*, my dynamic home servi
 
 [![Watch the video](https://img.youtube.com/vi/Dbookr_UOrE/maxresdefault.jpg)](https://www.youtube.com/watch?v=Dbookr_UOrE)
 
+## Medium Article
+
+I’ve written a detailed Medium article explaining the development process of *GrihaSeva*, including the dynamic real-time features such as service booking, provider dashboards, password reset with Flask-Mail, and more.
+
+[Read the Full Article on Medium](https://medium.com/@nirmalsai22/77690937741f)
+
+### Highlights from the Article:
+- Real-time service booking and provider management.
+- Secure password reset using Flask-Mail.
+- Integration of MySQL database for managing users and services.
+- Role-based access control for users and service providers.
+
+Check out the full article to learn more about the technical architecture and dynamic features of the *GrihaSeva* platform.
+
 ## Project Structure
 
 Here is an overview of the project structure with links to key files and directories:
