@@ -27,7 +27,7 @@ I’m excited to share a video walkthrough of *GrihaSeva*, my dynamic home servi
 
 I’ve written a detailed Medium article explaining the development process of *GrihaSeva*, including the dynamic real-time features such as service booking, provider dashboards, password reset with Flask-Mail, and more.
 
-[Read the Full Article on Medium](https://medium.com/@nirmalsai22/building-grihaseva-a-dynamic-home-services-web-app-with-real-time-features-77690937741f))
+[Read the Full Article on Medium](https://medium.com/@nirmalsai22/building-grihaseva-a-dynamic-home-services-web-app-with-real-time-features-77690937741f)
 
 ### Highlights from the Article:
 - Real-time service booking and provider management.
