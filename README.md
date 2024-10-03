@@ -21,7 +21,7 @@ You can view the static version of the GrihaSeva project here - [Website](https:
 
 I’m excited to share a video walkthrough of *GrihaSeva*, my dynamic home services platform! This video highlights the real-time features, such as service booking, provider dashboards, and the chatbot feature and explains one of the real-time functionalities - *Service Booking*
 
-[![Watch the video](https://img.youtube.com/vi/6QTFe2dbBvQ/hqdefault.jpg)](https://www.youtube.com/watch?v=6QTFe2dbBvQ)
+[![Watch the video](https://img.youtube.com/vi/mxShNzMWvJA/hqdefault.jpg)](https://www.youtube.com/watch?v=mxShNzMWvJA)
 
 ## Medium Article
 
